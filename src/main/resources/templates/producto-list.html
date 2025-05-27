@@ -76,6 +76,37 @@
         </tr>
         </tbody>
     </table>
+    <!--<table th:unless="${productos.isEmpty()}">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Disponible</th>
+            <th>Categoría</th>
+            <th>Acción</th>
+        </tr>
+        </thead>
+        <tbody th:each="producto : ${productos}">
+        <tr>
+            <td th:text="${producto.id}"></td>
+            <td th:text="${producto.nombre}"></td>
+            <td th:text="${#numbers.formatDecimal(producto.precio, 1, 2)} + ' €'"></td>
+            <td th:text="${producto.stock} + (${producto.stock == 1} ? ' Ud.' : ' Uds.')"></td>
+            <td th:text="${producto.disponible ? 'Sí' : 'No'}"
+                th:class="${producto.disponible ? 'disponible' : 'no-disponible'}"></td>
+            <td th:text="${producto.categoria != null ? producto.categoria.nombre : 'Sin categoría'}"></td>
+            <td>
+                <a th:href="@{/productos/{id}(id=${producto.id})}">Ver detalle</a>
+                <a th:href="@{/productos/{id}/editar(id=${producto.id})}">Editar</a>
+                <form th:action="@{/productos/{id}/eliminar(id=${producto.id})}" method="post">
+                    <button type="submit">Borrar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>-->
 </div>
 </body>
 </html>

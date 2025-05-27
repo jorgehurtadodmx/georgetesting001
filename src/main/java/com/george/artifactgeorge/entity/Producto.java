@@ -2,8 +2,8 @@ package com.george.artifactgeorge.entity;
 
 import jakarta.persistence.*;
 
-@Entity // indica que esta clase es una tabla
-@Table(name = "productos") // personaliza el nombre de la tabla
+@Entity
+@Table(name = "productos")
 public class Producto {
 
     @Id // indica que este atributo es la clave primaria

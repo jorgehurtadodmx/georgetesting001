@@ -27,11 +27,10 @@ public class ProductoController {
     // anotación que mapea las peticiones GET a la URL "/productos"
     @GetMapping("/productos") // http://localhost:8080/productos
     public String findAll(Model model) {
-        // crear una lista con todos los productos
-        List<Producto> productos = productoRepository.findAll();
-        model.addAttribute("productos", productos);
+    List<Producto> productos = productoRepository.findAll();
+    model.addAttribute("productos", productos);
+    return "producto-list";
 
-        return "producto-list";
     }
 
     @GetMapping("/productos/{id}") // http://localhost:8080/productos/1

@@ -27,7 +27,7 @@ public class NamegeorgeApplication {
 		Categoria frutas = new Categoria("Frutas", "Productos frescos");
 		Categoria lacteos = new Categoria("Lácteos", "Productos derivados de la leche");
 		Categoria cereales = new Categoria("Cereales", "Alimentos a base de granos y cereales");
-
+		//mas categorias?
 		// guardar categorías
 		categoriaRepository.saveAll(List.of(frutas, lacteos, cereales));
 

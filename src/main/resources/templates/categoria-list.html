@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lista de categorias</title>
+    <table th:unless="${categorias.isEmpty()}">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
 
-</body>
-</html>
+            <th>Acción</th>
+        </tr>
+        </thead>
+        <tbody th:each="categoria : ${categorias}">
+        <tr>
+            <td th:text="${categoria.id}"></td>
+            <td th:text="${categoria.nombre}"></td>
+
+            <td>
+                <a th:href="@{/categorias/{id}(id=${categoria.id})}">Ver detalle</a>
+                <a th:href="@{/categorias/{id}/editar(id=${categoria.id})}">Editar</a>
+                <form th:action="@{/categorias/{id}/eliminar(id=${categoria.id})}" method="post">
+                    <button type="submit">Borrar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
