@@ -6,8 +6,10 @@ import com.george.artifactgeorge.repository.CategoriaRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class CategoriaController {
@@ -28,4 +30,28 @@ public class CategoriaController {
 
         return "categoria-list";
     }
+
+    //create form para nueva categoria
+    @GetMapping("/categorias/nuevo")
+    public String createForm(Model model) {
+        model.addAttribute("categoria", new Categoria());
+
+
+        return "categoria-form";
+    }
+
+    @GetMapping("/categorias/{id}/editar")
+    public String editForm(Model model, @PathVariable Long id) {
+        Optional<Categoria> productoOpt = categoriaRepository.findById(id);
+
+        if (productoOpt.isPresent()) {
+            model.addAttribute("categoria", productoOpt.get());
+
+        } else {
+            model.addAttribute("error", "Categoria no encontrado");
+        }
+
+        return "categoria-form";
+    }
+
 }

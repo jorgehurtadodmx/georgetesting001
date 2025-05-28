@@ -71,6 +71,7 @@ public class ProductoController {
     }
 
     // procesar formulario (crear o actualizar)
+    //lo que es postmapping se ejecutará al realizarse un enlace a dicha url desde una vista.
     @PostMapping("/productos") // podría ser @PostMapping("/productos/form") si en el formulario pusiera th:action="@{/productos/form}"
     public String saveForm(@ModelAttribute Producto producto) {
         productoRepository.save(producto);
